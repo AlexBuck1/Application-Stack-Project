@@ -30,7 +30,7 @@ export default class CreateUser extends Component {
     };
     console.log(user);
     axios
-      .post("http://localhost:5000/users/add", user)
+      .post("https://it115-mernproject.herokuapp.com/users/add", user)
       .then((res) => console.log(res.data));
 
     //set back to blank after user is created

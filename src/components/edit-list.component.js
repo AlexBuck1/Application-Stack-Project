@@ -16,7 +16,10 @@ export default class EditList extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/interests/" + this.props.match.params.id)
+      .get(
+        "https://it115-mernproject.herokuapp.com/interests/" +
+          this.props.match.params.id
+      )
       .then((response) => {
         this.setState({
           username: response.data.username,
