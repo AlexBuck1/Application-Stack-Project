@@ -15,29 +15,22 @@ export default class EditList extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get(
-        "https://it115-mernproject.herokuapp.com/interests/" +
-          this.props.match.params.id
-      )
-      .then((response) => {
+    axios.get("/interests/" + this.props.match.params.id).then((response) => {
+      this.setState({
+        username: response.data.username,
+        favSong: response.data.favSong,
+        favColor: response.data.favColor,
+        favFood: response.data.favFood,
+        favNumber: response.data.favNumber,
+      });
+    });
+    axios.get("/users/").then((response) => {
+      if (response.data.length > 0) {
         this.setState({
-          username: response.data.username,
-          favSong: response.data.favSong,
-          favColor: response.data.favColor,
-          favFood: response.data.favFood,
-          favNumber: response.data.favNumber,
+          users: response.data.map((user) => user.username),
         });
-      });
-    axios
-      .get("https://it115-mernproject.herokuapp.com/users/")
-      .then((response) => {
-        if (response.data.length > 0) {
-          this.setState({
-            users: response.data.map((user) => user.username),
-          });
-        }
-      });
+      }
+    });
   }
 
   onChangeUsername = (e) => {
@@ -87,7 +80,7 @@ export default class EditList extends Component {
     console.log(interest);
 
     axios
-      .post("interests/update/" + this.props.match.params.id, interest)
+      .post("/interests/update/" + this.props.match.params.id, interest)
       .then((res) => console.log(res.data));
     //once submitted go back home
     window.location = "/";
