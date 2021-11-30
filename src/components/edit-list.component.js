@@ -87,11 +87,7 @@ export default class EditList extends Component {
     console.log(interest);
 
     axios
-      .post(
-        "https://it115-mernproject.herokuapp.com/interests/update/" +
-          this.props.match.params.id,
-        interest
-      )
+      .post("/interests/update/" + this.props.match.params.id, interest)
       .then((res) => console.log(res.data));
     //once submitted go back home
     window.location = "/";
