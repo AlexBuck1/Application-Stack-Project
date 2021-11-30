@@ -39,21 +39,21 @@ router.route("/add").post((req, res) => {
 });
 
 //getting individual interests
-router.route(":id").get((req, res) => {
+router.route("/:id").get((req, res) => {
   Interest.findById(req.params.id)
     .then((interest) => res.json(interest))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 //deleting interests
-router.route(":id").delete((req, res) => {
+router.route("/:id").delete((req, res) => {
   Interest.findByIdAndDelete(req.params.id)
     .then(() => res.json("Interest deleted."))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 //updating interest
-router.route("update/:id").post((req, res) => {
+router.route("/update/:id").post((req, res) => {
   Interest.findById(req.params.id).then((interest) => {
     interest.username = req.body.username;
     interest.favSong = req.body.favSong;

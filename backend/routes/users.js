@@ -5,7 +5,7 @@ let User = require("../models/user.model");
 
 //finding the user model
 //first endpoint
-router.route("").get((req, res) => {
+router.route("/").get((req, res) => {
   //find user then send the result  of users in a json format
   User.find()
     .then((users) => res.json(users))
@@ -14,7 +14,7 @@ router.route("").get((req, res) => {
 });
 
 //function to add a new user
-router.route("add").post((req, res) => {
+router.route("/add").post((req, res) => {
   //assigning user input as the const username
   const username = req.body.username;
   const newUser = new User({ username });
