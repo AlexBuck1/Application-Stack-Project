@@ -26,16 +26,14 @@ class CreateInterest extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get("https://it115-mernproject.herokuapp.com/users/")
-      .then((response) => {
-        if (response.data.length > 0) {
-          this.setState({
-            users: response.data.map((user) => user.username),
-            username: response.data[0].username,
-          });
-        }
-      });
+    axios.get("http://localhost:5000/users/").then((response) => {
+      if (response.data.length > 0) {
+        this.setState({
+          users: response.data.map((user) => user.username),
+          username: response.data[0].username,
+        });
+      }
+    });
   }
 
   onChangeUsername = (e) => {
@@ -85,7 +83,7 @@ class CreateInterest extends Component {
     console.log(interest);
 
     axios
-      .post("https://it115-mernproject.herokuapp.com/interests/add", interest)
+      .post("http://localhost:5000/interests/add", interest)
       .then((res) => console.log(res.data));
     //once submitted go back home
     window.location = "/";
