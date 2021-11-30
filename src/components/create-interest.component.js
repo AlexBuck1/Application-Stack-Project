@@ -83,7 +83,7 @@ class CreateInterest extends Component {
     console.log(interest);
 
     axios
-      .post("http://localhost:5000/interests/add", interest)
+      .post("https://it115-mernproject.herokuapp.com/interests/add", interest)
       .then((res) => console.log(res.data));
     //once submitted go back home
     window.location = "/";

@@ -26,14 +26,16 @@ export default class InterestList extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:5000/interests/").then((response) => {
-      this.setState({ interests: response.data });
-    });
+    axios
+      .get("https://it115-mernproject.herokuapp.com/interests/")
+      .then((response) => {
+        this.setState({ interests: response.data });
+      });
   }
 
   deleteInterest = (id) => {
     axios
-      .delete("http://localhost:5000/interests/" + id)
+      .delete("https://it115-mernproject.herokuapp.com/interests/" + id)
       .then((res) => console.log(res.data));
     this.setState({
       interests: this.state.interests.filter((el) => el._id !== id),

@@ -16,7 +16,10 @@ export default class EditList extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/interests/" + this.props.match.params.id)
+      .get(
+        "https://it115-mernproject.herokuapp.com/interests/" +
+          this.props.match.params.id
+      )
       .then((response) => {
         this.setState({
           username: response.data.username,
@@ -26,13 +29,15 @@ export default class EditList extends Component {
           favNumber: response.data.favNumber,
         });
       });
-    axios.get("http://localhost:5000/users/").then((response) => {
-      if (response.data.length > 0) {
-        this.setState({
-          users: response.data.map((user) => user.username),
-        });
-      }
-    });
+    axios
+      .get("https://it115-mernproject.herokuapp.com/users/")
+      .then((response) => {
+        if (response.data.length > 0) {
+          this.setState({
+            users: response.data.map((user) => user.username),
+          });
+        }
+      });
   }
 
   onChangeUsername = (e) => {
@@ -83,7 +88,8 @@ export default class EditList extends Component {
 
     axios
       .post(
-        "http://localhost:5000/interests/update/" + this.props.match.params.id,
+        "https://it115-mernproject.herokuapp.com/interests/update/" +
+          this.props.match.params.id,
         interest
       )
       .then((res) => console.log(res.data));
