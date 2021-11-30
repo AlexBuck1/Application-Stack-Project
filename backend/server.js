@@ -13,7 +13,7 @@ const app = express();
 const port = process.env.PORT;
 
 //This is the database and connecting to it
-const uri = process.env.URI;
+const uri = process.env.MONGODB_URI;
 //
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
