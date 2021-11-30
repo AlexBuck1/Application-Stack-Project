@@ -16,7 +16,7 @@ function App() {
         <Route path="/" exact component={InterestList} />
         <Route path="/edit/:id" component={EditList} />
         <Route path="/create" component={CreateInterest} />
-        <Route path="/user" component={CreateUser} />
+        <Route path="/users" component={CreateUser} />
       </div>
     </>
   );
