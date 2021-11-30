@@ -28,6 +28,7 @@ app.use(cors());
 
 //allows parsing of JSON
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 //connecting models of the db to server
 //first require the files to link the models and routes folders to this page
