@@ -10,7 +10,7 @@ require("dotenv").config();
 
 //Creates express server and sends to port
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 //This is the database and connecting to it
 const uri = process.env.MONGODB_URI;
