@@ -26,7 +26,7 @@ class CreateInterest extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:5000/users/").then((response) => {
+    axios.get("/users/").then((response) => {
       if (response.data.length > 0) {
         this.setState({
           users: response.data.map((user) => user.username),
@@ -82,9 +82,7 @@ class CreateInterest extends Component {
 
     console.log(interest);
 
-    axios
-      .post("http://localhost:5000/interests/add", interest)
-      .then((res) => console.log(res.data));
+    axios.post("/interests/add", interest).then((res) => console.log(res.data));
     //once submitted go back home
     window.location = "/";
   };

@@ -15,18 +15,16 @@ export default class EditList extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get("http://localhost:5000/interests/" + this.props.match.params.id)
-      .then((response) => {
-        this.setState({
-          username: response.data.username,
-          favSong: response.data.favSong,
-          favColor: response.data.favColor,
-          favFood: response.data.favFood,
-          favNumber: response.data.favNumber,
-        });
+    axios.get("/interests/" + this.props.match.params.id).then((response) => {
+      this.setState({
+        username: response.data.username,
+        favSong: response.data.favSong,
+        favColor: response.data.favColor,
+        favFood: response.data.favFood,
+        favNumber: response.data.favNumber,
       });
-    axios.get("http://localhost:5000/users/").then((response) => {
+    });
+    axios.get("/users/").then((response) => {
       if (response.data.length > 0) {
         this.setState({
           users: response.data.map((user) => user.username),
@@ -82,10 +80,7 @@ export default class EditList extends Component {
     console.log(interest);
 
     axios
-      .post(
-        "http://localhost:5000/interests/update/" + this.props.match.params.id,
-        interest
-      )
+      .post("/interests/update/" + this.props.match.params.id, interest)
       .then((res) => console.log(res.data));
     //once submitted go back home
     window.location = "/";

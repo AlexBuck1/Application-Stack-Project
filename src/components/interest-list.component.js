@@ -11,9 +11,9 @@ const Interest = (props) => (
     <td>{props.interest.favNumber}</td>
     <td>
       <Link to={"/edit/" + props.interest._id}>Edit</Link> |
-      <a href="#" onClick={() => props.deleteInterest(props.interest._id)}>
+      <button onClick={() => props.deleteInterest(props.interest._id)}>
         Delete
-      </a>
+      </button>
     </td>
   </tr>
 );
@@ -26,15 +26,13 @@ export default class InterestList extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:5000/interests/").then((response) => {
+    axios.get("/interests/").then((response) => {
       this.setState({ interests: response.data });
     });
   }
 
   deleteInterest = (id) => {
-    axios
-      .delete("http://localhost:5000/interests/" + id)
-      .then((res) => console.log(res.data));
+    axios.delete("/interests/" + id).then((res) => console.log(res.data));
     this.setState({
       interests: this.state.interests.filter((el) => el._id !== id),
     });

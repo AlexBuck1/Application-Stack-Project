@@ -13,7 +13,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 //This is the database and connecting to it
-const uri = process.env.URI;
+const uri = process.env.MONGODB_URI;
 //
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
@@ -28,6 +28,7 @@ app.use(cors());
 
 //allows parsing of JSON
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 //connecting models of the db to server
 //first require the files to link the models and routes folders to this page

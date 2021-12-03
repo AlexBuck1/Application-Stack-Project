@@ -47,7 +47,7 @@ router.route("/:id").get((req, res) => {
 
 //deleting interests
 router.route("/:id").delete((req, res) => {
-  Interest.findByIdAnpndDelete(req.params.id)
+  Interest.findByIdAndDelete(req.params.id)
     .then(() => res.json("Interest deleted."))
     .catch((err) => res.status(400).json("Error: " + err));
 });
